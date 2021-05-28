@@ -1,0 +1,159 @@
+﻿Google drive :
+https://docs.google.com/document/d/1zDXOW16oY7o6tmieZmF18kMXwEk6xEsr556Rl9a01H4/edit#heading=h.6gl20cphx3m3
+
+Cinématique:
+début -> gif ou animation en raport avec le theme et la DA, et Le titre en premier plan
+--> Faire plusieur tilmeline avec des tweens pour une cinématique in game
+
+la music est super importante pour l'ambiance 
+-> le debut doit etre simple pas trop fort pour que lorsqu'on switch d'ambiance le joueur ne sorte pas de sont état de concentration / immersion
+
+pour le tuto essayer de faire un step by step comme thomas was alone mais avec des idées différentes.
+-> le tuto est un niveaux en entier, il apprend a se déplacer maniule un peu puis on passe a deux planète de la meme couleur.
+-> intégrer une sorte de bip bip comme si une voix nous parlé
+
+pour le début d'un niveau faire en sorte que la caméra parte de la fin et arrive jusqu'a ou se trouve le joueur 
+-> pour que ce dernier comprenne / enticipe inconciemment le niveau
+
+je vais pas mettre de systeme de vie finalement
+
+Petit appareil qui sera le narrateur et qui accompagne le joueur dans sa quète.
+
+///////////////////////tuto idée//////////////////////////////
+
+Le joueur sort du vaisseau et doit aller chercher quelque chose sur une planète
+---> Le joueur est applatie sur le sol et il se reveille (ex: flac boue -> cube)
+----> Le petit compagnon nous explique comment on est arrivé la 
+-----> Possibilité de repondre avec des oui ou non (trouver une manière original qui fait un forshadowing sur le jeu) 
+------> ex: cube qui slide de réponse en reponse (gauche a droite) et qui change de couleur en fonction de ce qui est selectionner
+-> il va donc se balader de planète en planète pour découvrir la mécanique principale.
+--> Il pourra choisir de suivre l'objectif ou non (explorer les différentes planètes).
+-> De retour au vaisseau on comprend qu'il vue retrouver son vaisseau planète et que pour cela il a besoin d'un mineraie (présent 1 fois ds tt les niveaux) le nombre reste a déterminer.
+--> Les mineraies, il serviront de carburant pour rejoindre le vaisseaux planète.
+-> Dès que le joueur découvre le minerai ( couleur violette ) petit zoom dessus et sous titres expliquent ce que c'est.
+
+///////////////////////tuto idée//////////////////////////////
+
+-> Mettre une trainer sur le personnage pour qu'il ai un feedback de la direction dans laquelle il va
+--> Faire une animation du field si il rebond ou sort de la planète ( des animation différentes )
+
+-> L'extraterrestre prend la couleur mais aussi le matériaux de la planète c'est donc pour ca qu'il a la meme texture / extétique que les planètes
+
+-> Faire en sorte que le bute soit visuellement instinctif
+
+-> Le joueur est perdu dans l'espace il est accompagné d'une entité qui nous est inconnu.
+--> Elle nous suivera pendant toute notre avanture.
+--> L'objectif du joueur est de retrouver son vaisseau dans l'espace grace a des mineraies ou antennes ou déchet de carburant laissé par le vaisseau.
+--> L'entité analyse pour nous ce que l'on dois trouver et ca nous permet d'avoir des information sur sa position, son état (on va penbser qu'il se déplace encore sauf qu'au deuxieme niveau
+--> on apprend qu'il s'est craché + un bou de position.
+
+-> Faire des check points si les niveaux sont trop long
+-> Des que le joueur perd 1 point de vie il revient sur la dernière planète safe
+
+-> Le choix de niveaux c'est l'entité qui le fait, au premier niveaux on va aller penser aller au vaisseau direct sauf qu'n se rend compte sur place que c'est juste son éméteur qui c'est détaché
+--> Il va falloir faire attention a la cohérence des indices.
+
+-> Le menu pause c'est aussi l'entité qui nous permet d'y avoir acces
+--> Dans le menu principale on aura cette forme (comme le menu pause ingame) pour garder la cohérence.
+
+-> Faire le level design de tout les choses possible et les faire tester le plus rapidement possible pour arranger au mieux
+-> Faire une camera fixe et plus dézoomé que la précédente pour avoir deja la vision global de la ou on doit aller.
+Faire monter la difficulter petit a petit pour que le joueur soit alaise avec les verbes de base Mais ne pas faire que ce soit trop long
+-> Faire le changeùent de parsellle de niveaux a la mario galaxie.
+-> Mettre des collectibles pour guider le joueur 
+-> Mettre des ennemies pour fermer les chemin et pour le mettre sur la bonne piste de base.
+
+-> Faire commencer le joueur sur une planète rouge pour pas qu'il ai peur des planète de cette couleur comme il sera dessus il saura qu'il est safe dessus. 
+
+-> Faire en sorte que les objectif / ennemies / collectibles soit intutif pour le joueur 
+( jouer avec les couleurs, briance et forme -> regarde ce que tout le monde pense quand on parle d'ennemie, objectif...)
+
+-> faire un système de previsualisation au début du niveau avec lmes timeline tween
+
+-> Faire les couleurs avec des images coloré pas avec des tint pour de meilleurs qualitées
+
+-> Faire des planètes de transitioons pour avoir un seul passage possible entre les parcelles
+
+-> Faire faire des erreurs au joueur pour qu'il apprenne
+
+KI SHO TEN KETSU
+-> ki : la découverte de l'environnement et des mécaniques
+-> Sho : Le rappel (attendre 10 min pour que ca se stock dans la mémoir a cours terme)
+-> Ten : retournement de situation (montrer toute les faces des mécaniques)
+-> Ketsu : 
+
+Les Bugs: 
+-> Mettre une sécuritée pour les tween cklavier et voir si on peut le faire pour la manette aussi
+-> Le tween de déplacement a la manette (éviter que le joueur et la créature partent en couille)
+--> Faire que la creature ne subise la rotation du container qu'a la fin  du tween
+-> Le changement de caméra a adapter pour la manette ( reduire le petit pour ne pas le toucher lorsqu'on passe a l'intérieur de la planète
+
+La DA / info 2D:
+-> Faire des recherches sur ce que des pro / amateurs on fait pour le minimalist
+-> Faire un mockup pour tester les texture / couleur / formes etc (faire plusieurs mockup)
+-> tout est sujet a etre contrasté
+-> Personnage avec une matière / couleur de base -> qui a une énergie a l'intérieur qui change sa couleur ce qui fait qu'il est attiré / repousser sur des planètes
+--> Pousser le pourquoi il peut changer de couleur et comment il fait pour ce qu'il y a au dessus
+-> Sur le bas du juoueur (ce qui touche le sol) assombrir pour donner un effet de profondeur a la planète et au joueur
+-> Mouvement avec une traj oval de la creaturee 
+-> Météorite en noir ét blanc pour le contraste de couleur
+
+Sound Design:
+- Essayer de faire une music avec les sons "Magic wand ping" sur le site https://www.zapsplat.com/sound-effect-category/fantasy/page/5/
+- Bruitage https://www.zapsplat.com/page/3/?s=cartoon+water+drip&post_type=music&sound-effect-category-id
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+//////////////////////// REMASTORISATION DIMENSION CHENGER ////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+Faire que le joueur est a moitié dans la cellule avec une délimitation de la couleur du fond pour le joueur
+Le joueur ne bouge pas lorsqu'il change de dimension et qu'il n'était pas en mouvement avant
+Faire le chargement avec les formes qui change ( rond > triangle > carré > pentagone > octo > rond)
+
+Retour playtest :
+Alexis:
+- Camera trop fort le mouvement de slide
+
+blue:
+- changement camera pouvoir bouger 
+- enbranchement a faire souvent si je veu en faire 
+- forcer le joueur a prendre un module + faire des chemin optimal pour favorisé ce qui on compri
+- faire des niveau intance lais cours siu ca correspond au GD / LD
+- La mort trop long puisqu'on sait qu'on est mort
+
+Blanc : fffef0
+Noir : 241f1d
+
+bug avec le collid en switxch dimension a verif soon
+
+
+To DO :
+
+1. DONE terminer la DA + animation (faire les designs des modules ( rond, octogone, player, celluleMère)
+2. DONE Faire le dossier DA (affiche et tt la)
+3. DOING Faire le niveau scénarisé 
+	(1. DONE faire le ESC pour retourner en arrière, 
+	2. DONE Faire le dialogue de la bactérie, 
+	3. DONE Faire la propulsion (empêcher le changement de dimension) que a la fin du dialogue, 
+	4. DONE la hitbox avec la barrière en dimension inverse )
+4. DONE Sound Design Let's go !!!
+5. DONE Faire le Level design de 5 niveaux ( le 5 est le final )
+6. DONE Rajouter les flèches directionelles pour se déplacer
+6.5 DONE et lme click quand on ezst sur la première image
+7. DONE faire le echapp dans stage
+
+faire pour polish:
+DONE faire le tuto en mieux (petit bouton help avec touches) => faire avec 1 planète en hauteur qui permet de monter dessus et la celllule mère est au dessus et monte
+DONE faire le changement de dimension en container dans le joueur avec ( 3 blanc, 3 noir )
+
+
+DONE revoir le google form ( mettre l'anonyme (ne pas contraindre le playtesteur))
+DONE espace pour le dialogue
+PAS ADAPTER AU GD le nom de level entre chaque trans de level
+DONE a la fin du niveau 0 lancer direct vers le level 1
+DONE faire le compare color a la place de adaptBg au debut du niveau
+DONE Rework de la camrea (position défini pas de tableau avec le slide a faire)
+DONE faire le changement de couleur dans les dimension de la cellule mère +  augmenter son cercle de bg 
+faire une passage de dialogue avec la cellule merer pour faire une conclusion
