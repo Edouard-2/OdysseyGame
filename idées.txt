@@ -108,6 +108,8 @@ Sound Design:
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+
+
 Faire que le joueur est a moitié dans la cellule avec une délimitation de la couleur du fond pour le joueur
 Le joueur ne bouge pas lorsqu'il change de dimension et qu'il n'était pas en mouvement avant
 Faire le chargement avec les formes qui change ( rond > triangle > carré > pentagone > octo > rond)
@@ -135,25 +137,40 @@ To DO :
 2. DONE Faire le dossier DA (affiche et tt la)
 3. DOING Faire le niveau scénarisé 
 	(1. DONE faire le ESC pour retourner en arrière, 
-	2. DONE Faire le dialogue de la bactérie, 
+	
+2. DONE Faire le dialogue de la bactérie, 
 	3. DONE Faire la propulsion (empêcher le changement de dimension) que a la fin du dialogue, 
-	4. DONE la hitbox avec la barrière en dimension inverse )
+	
+4. DONE la hitbox avec la barrière en dimension inverse )
 4. DONE Sound Design Let's go !!!
+
 5. DONE Faire le Level design de 5 niveaux ( le 5 est le final )
 6. DONE Rajouter les flèches directionelles pour se déplacer
+
 6.5 DONE et lme click quand on ezst sur la première image
+
 7. DONE faire le echapp dans stage
 
 faire pour polish:
+
 DONE faire le tuto en mieux (petit bouton help avec touches) => faire avec 1 planète en hauteur qui permet de monter dessus et la celllule mère est au dessus et monte
+
 DONE faire le changement de dimension en container dans le joueur avec ( 3 blanc, 3 noir )
 
 
+
 DONE revoir le google form ( mettre l'anonyme (ne pas contraindre le playtesteur))
+
 DONE espace pour le dialogue
 PAS ADAPTER AU GD le nom de level entre chaque trans de level
+
 DONE a la fin du niveau 0 lancer direct vers le level 1
+
 DONE faire le compare color a la place de adaptBg au debut du niveau
+
 DONE Rework de la camrea (position défini pas de tableau avec le slide a faire)
+
 DONE faire le changement de couleur dans les dimension de la cellule mère +  augmenter son cercle de bg 
 faire une passage de dialogue avec la cellule merer pour faire une conclusion
+
+FAIRE LE DEPLACEMENT DE LA CAMERA AVEC UN FOLLOW D4UN OBJET QUI SE DEPLACE SUR LA SCENE POUR QUE TOUT LES ECRANS PUISSENT AVOIR LE MEME MOUVEMENT DE CAMREA
