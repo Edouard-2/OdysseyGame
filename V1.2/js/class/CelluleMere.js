@@ -127,6 +127,9 @@ class CelluleMere extends Phaser.GameObjects.Container {
 
                 // Lancer le main Menu
                 this.scene.scene.stop( curLevel )
+                if( indexLvl == 0){
+                    indexLvl = 1;
+                }
                 curLevel = dataBase.level[ indexLvl ];
                 this.scene.scene.launch( curLevel )
             }, this);
