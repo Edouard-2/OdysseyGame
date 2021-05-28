@@ -117,6 +117,7 @@ class Map {
                 // console.log(this.scene.t_BoutonsStage)
                 this.scene.t_BoutonsStage.push( new StageBouton( this.scene, Stage.x * 2 + game.config.width / 5, Stage.y * 2 + game.config.width / 10, Stage.properties[0].value, 1, true ) );
             }
+
             else{
                 this.scene.t_BoutonsStage.push( new StageBouton( this.scene, Stage.x * 2 + game.config.width / 5, Stage.y * 2 + game.config.width / 10, 0 , 1 ) );
             }

@@ -15,7 +15,7 @@ class Level5 extends Phaser.Scene {
         this.space = false;
         this.multipleY = 1.3;
         this.multipleX = 1.5;
-        this.cameraNodes = [ 3, 3, 3, 3, 3 ];
+        this.cameraNodes = [ 3, 3, 3, 3, 3, 3 ];
         this.cameraPosition = {
             0 : {
                 x: 0,

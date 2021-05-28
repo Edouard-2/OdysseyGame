@@ -3,8 +3,7 @@
     {
      "export":
         {
-         "format":"json",
-         "target":"..\/..\/..\/V1.1\/assets\/Tiled"
+         "format":"json"
         }
     },
  "height":50,
@@ -290,7 +289,7 @@
                         {
                          "name":"orientation",
                          "type":"int",
-                         "value":3
+                         "value":2
                         }, 
                         {
                          "name":"scroll",
@@ -603,13 +602,13 @@
  "nextobjectid":83,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.6.0",
  "tileheight":200,
  "tilesets":[
         {
          "columns":5,
          "firstgid":1,
-         "image":"..\/..\/..\/V1.1\/assets\/Tiled\/tileSet.png",
+         "image":"..\/..\/..\/..\/GravitonEdouard\/V1.1\/assets\/Tiled\/tileSet.png",
          "imageheight":1000,
          "imagewidth":1000,
          "margin":0,
@@ -636,6 +635,6 @@
         }],
  "tilewidth":200,
  "type":"map",
- "version":1.4,
+ "version":"1.6",
  "width":50
 }

@@ -113,12 +113,19 @@ class Idle extends Phaser.Scene {
             proportionZoom = 0.8;
             proportion = 1;
         }
+
         else if( proportion < 0.8 && proportion > 0.7 ){
             proportionZoom = 0.7;
             proportion = 1;
         }
-        else{
+
+        else if(proportion < 0.7){
             proportionZoom = 0.6;
+            proportion = 1;
+        }
+
+        else{
+            proportionZoom = 1;
             proportion = 1;
         }
 

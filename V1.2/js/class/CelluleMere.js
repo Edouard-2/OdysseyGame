@@ -30,7 +30,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
             this.hitbox = createHitbox( this.scene, 0, 0, 10, 10, true );
 
             this.hitbox.body.setCircle( this.sprite.width/4 ).setOffset( -this.sprite.width/4 )
-            
+
             this.overlap = true;
 
             this.hitbox.parent = this;
@@ -48,7 +48,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
             this.scene.physics.add.overlap( player, this.hitbox, null, this.changeDimension, this );
 
             this.add( this.hitbox );
-        
+
         }
 
         this.makeColor( color );
@@ -85,7 +85,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
             onComplete: (tween)=>{
                 this.scene.tweens.add({
                     targets: this.sprite3,
-                    scale: 9,
+                    scale: 10,
                     duration: 3000,
                     ease: "Power1",
                     onComplete: (tween)=>{
@@ -113,7 +113,6 @@ class CelluleMere extends Phaser.GameObjects.Container {
             setTimeout(() => {
                 this.scene.cameras.main.fadeOut( 1000 );
             }, 3000);
-            
 
             // Lancer la scene apres le fade out
             this.scene.cameras.main.on('camerafadeoutcomplete', ()=>{ 
@@ -145,6 +144,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
             repeat: -1,
             repeatDelay: getRand( 1000 )
         });
+
         this.dist = this.scene.tweens.add({
             targets: this,
             y: this.y + 100,
@@ -206,7 +206,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
             // this.sprite.play("White");
             this.fond.setTint( Black );
             this.sprite.setTint( White );
-            this.sprite3.setTint( Black );
+            this.sprite3.setTint( White );
             
         }
         else if( color == Black ){
