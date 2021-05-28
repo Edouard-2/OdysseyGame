@@ -68,6 +68,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
     }
 
     endTraj( obj ){
+        this.scene.event.compareColor();
         obj.body.setVelocity(0)
         obj.setDepth(10)
         this.tweenStop = true;

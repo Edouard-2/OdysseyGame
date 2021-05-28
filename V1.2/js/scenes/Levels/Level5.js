@@ -82,6 +82,14 @@ class Level5 extends Phaser.Scene {
         if( gameState == 1 ){
             // Interaction du joueur
             this.event.interaction();
+
+            this.dial.update();
         }
+    }
+
+    activePropulse(){
+        
+        this.event.readyJump = true;
+        console.log(this.event.readyJump)
     }
 }

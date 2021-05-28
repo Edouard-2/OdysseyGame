@@ -230,6 +230,7 @@ class Dialogue extends Phaser.GameObjects.Container {
             this.closeText = false;
             this.dialTextUp.setVisible(false);
             this.dialTextDown.setVisible(false);
+            this.espace.setVisible(false);
             this.scene.activePropulse();
         }
     }

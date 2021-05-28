@@ -174,3 +174,5 @@ DONE faire le changement de couleur dans les dimension de la cellule mère +  au
 faire une passage de dialogue avec la cellule merer pour faire une conclusion
 
 FAIRE LE DEPLACEMENT DE LA CAMERA AVEC UN FOLLOW D4UN OBJET QUI SE DEPLACE SUR LA SCENE POUR QUE TOUT LES ECRANS PUISSENT AVOIR LE MEME MOUVEMENT DE CAMREA
+
+faire l'adaptation du stage en fonction de la taille de l'ecran
