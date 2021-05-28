@@ -48,7 +48,7 @@ class Octogone extends Phaser.GameObjects.Container {
         this.safe = true;
         
         this.fond = this.scene.add.sprite( 0 , -4 , 'receptriceFond' ).setScale(0);
-        this.sprite = this.scene.add.sprite( 0 , -4 , 'receptrice' ).setScale( 1 * proportion);
+        this.sprite = this.scene.add.sprite( 0 , -4 , 'receptrice' ).setScale( 1 );
 
         // console.log(this.spriteCenter)
         // this.sprite.setDepth(10);
@@ -85,7 +85,7 @@ class Octogone extends Phaser.GameObjects.Container {
     createTweenScale(){
         this.scene.tweens.add({
             targets: this,
-            scale: 1.1 * proportion,
+            scale: 1.1 ,
             ease: "linear",
             hold: getRand( 200 ),
             yoyo: true,
@@ -98,7 +98,7 @@ class Octogone extends Phaser.GameObjects.Container {
     tweenScaleFond( bool ){
         console.log(bool)
         if( bool ){
-            var scale = 1* proportion;
+            var scale = 1;
             var delay = 0;
         }
         else{
@@ -230,42 +230,42 @@ class Octogone extends Phaser.GameObjects.Container {
         this.a_pos.push({
             id: 0,
             x: this.x,
-            y:( this.y - this.sprite.height* proportionH  / 2.3 - 10 )
+            y:( this.y - this.sprite.height  / 2.3 - 10 )
         });
         this.a_pos.push({
             id: 1,
-            x: ( this.x + this.sprite.width* proportionW  / 3.4 + 10 ),
-            y: ( this.y - this.sprite.height* proportionH  / 3.4 - 10 )
+            x: ( this.x + this.sprite.width  / 3.4 + 10 ),
+            y: ( this.y - this.sprite.height  / 3.4 - 10 )
         });
         this.a_pos.push({
             id: 2,
-            x: ( this.x + this.sprite.width* proportionW / 2.3 + 10 ),
+            x: ( this.x + this.sprite.width / 2.3 + 10 ),
             y: ( this.y )
         });
         this.a_pos.push({
             id: 3,
-            x: ( this.x + this.sprite.width* proportionW / 3.4 + 10 ),
-            y: ( this.y + this.sprite.height* proportionH / 3.4 + 10 )
+            x: ( this.x + this.sprite.width / 3.4 + 10 ),
+            y: ( this.y + this.sprite.height / 3.4 + 10 )
         });
         this.a_pos.push({
             id: 4,
             x: ( this.x ),
-            y: ( this.y + this.sprite.height* proportionH / 2.3 + 10 )
+            y: ( this.y + this.sprite.height / 2.3 + 10 )
         });
         this.a_pos.push({
             id: 5,
-            x: ( this.x - this.sprite.width* proportionW / 3.4 - 10 ),
-            y: ( this.y + this.sprite.height* proportionH / 3.4 + 10 )
+            x: ( this.x - this.sprite.width / 3.4 - 10 ),
+            y: ( this.y + this.sprite.height / 3.4 + 10 )
         });
         this.a_pos.push({
             id: 6,
-            x: ( this.x - this.sprite.width* proportionW / 2.3 - 10 ),
+            x: ( this.x - this.sprite.width / 2.3 - 10 ),
             y: ( this.y )
         });
         this.a_pos.push({
             id: 7,
-            x: ( this.x - this.sprite.width* proportionW / 3.4 - 10 ),
-            y: ( this.y - this.sprite.height* proportionH / 3.4 - 10 )
+            x: ( this.x - this.sprite.width / 3.4 - 10 ),
+            y: ( this.y - this.sprite.height / 3.4 - 10 )
         });
     }
 }

@@ -551,9 +551,9 @@ class Player extends Phaser.GameObjects.Container {
         // if( x && y){
         // this.readyMovement = false;
         this.scene.tweens.add({
-            targets: this.scene.cameras.main,
-            scrollX: x,
-            scrollY: y,
+            targets: cameraEmpty,
+            x: x,
+            y: y,
             ease: 'Quad',
             duration: 700,
             onComplete: (tween) => {

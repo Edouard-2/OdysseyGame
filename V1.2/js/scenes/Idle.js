@@ -107,14 +107,19 @@ class Idle extends Phaser.Scene {
     create() {
 
         // Creation de la variable pour la proportion d'écran et le zoom de la camrea
-        proportionW = game.config.width * 1 / 1920;
-        proportionH = game.config.height * 1 / 1080;
+        proportion = game.config.width * 1 / 1920;
 
-        if( proportionW >= proportionH ){
-            proportion = proportionW;
+        if( proportion < 0.9 && proportion > 0.8 ){
+            proportionZoom = 0.8;
+            proportion = 1;
+        }
+        else if( proportion < 0.8 && proportion > 0.7 ){
+            proportionZoom = 0.7;
+            proportion = 1;
         }
         else{
-            proportion = proportionH;
+            proportionZoom = 0.6;
+            proportion = 1;
         }
 
         console.log(proportion)

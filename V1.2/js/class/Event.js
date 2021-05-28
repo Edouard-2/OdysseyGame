@@ -667,15 +667,10 @@ function addNumber( i, nbr ){
 
 function addCameraPostion( scene, i, xDir , yDir ){
 
-    if( proportion < 0.93 ){
-        // // console.log("ouiiiii")
-        var w = (game.config.width * (proportionW) * 1.2 );
-        var h = (game.config.height * (proportionH) * 1.2 );
-    }
-    else{
-        var w = game.config.width ;
-        var h = game.config.height ;
-    }
+
+    var w = 1920/1.2 ;
+    var h = 1080/1.2 ;
+    
 
     // Si ce n'est pas la première case du tableau
     if( i != 0 ){
@@ -694,19 +689,19 @@ function addCameraPostion( scene, i, xDir , yDir ){
     // Si c'est la première case du tableau
     else{
         if( xDir != 0 ){
-            scene.cameraPosition[i].x = scene.cameras.main.scrollX + w* scene.multipleX * xDir;
+            scene.cameraPosition[i].x = cameraEmpty.x + w* scene.multipleX * xDir;
 
-            scene.cameraPosition[i].y = scene.cameras.main.scrollY;
+            scene.cameraPosition[i].y = cameraEmpty.y;
         }
         else{
-            scene.cameraPosition[i].x = scene.cameras.main.scrollX;
-            // console.log(scene.cameras.main)
+            scene.cameraPosition[i].x = cameraEmpty.x;
+            // console.log(cameraEmpty)
 
             if( curLevel == "Level0" ){
-                scene.cameraPosition[i].y = scene.cameras.main.scrollY + h* 1.8 * yDir;
+                scene.cameraPosition[i].y = cameraEmpty.y + h* 1.8 * yDir;
             }
             else{
-                scene.cameraPosition[i].y = scene.cameras.main.scrollY + h* scene.multipleY * yDir;
+                scene.cameraPosition[i].y = cameraEmpty.y + h* scene.multipleY * yDir;
             }
         }
     }
@@ -737,15 +732,23 @@ function createCameraPos( scene ){
     }
 }
 
+function createCameraEmpty( scene ){
+    cameraEmpty = scene.add.image(0,0);
+    scene.cameras.main.startFollow( cameraEmpty );
+}
+
 // Creation de la camera
 function initCamera(scene, bool){
     // Zoom tres large pour faire l'effet
     // scene.cameras.main.setZoom(0.1 * proportion);
     // reation de variable
+
+    createCameraEmpty( scene );
+
     scene.cameras.main.fadeIn( 500 )
 
     // Faire l'effet de zoom apres le fade in
-    scene.cameras.main.zoomTo( 0.2 * proportion ,700 ,'Expo' );
+    scene.cameras.main.zoomTo( 0.2 * proportionZoom ,700 ,'Expo' );
     scene.cameras.main.on('camerafadeincomplete', ()=>{ 
         if( bool ){
             // // console.log("pause21")
@@ -755,8 +758,7 @@ function initCamera(scene, bool){
             gameState = 1;
         }
         
-        scene.space = new Space( scene, scene.cameras.main );
-    }, scene);
+    }, this);
 }
 
 // Changer de level actuel
@@ -1067,43 +1069,53 @@ function spawnCamera( scene, layer, camera, orientation ){
     
 
     if( orientation == 0 ){
-        camera.centerOn( layer.x *1.6 + game.config.width*1.6, layer.y *1.5 + game.config.height / 1.25 );
+        cameraEmpty.setPosition( layer.x *1.6 + 1920*1.6, layer.y *1.5 + 1080 / 1.25  )
+        // camera.centerOn( layer.x *1.6 + game.config.width*1.6, layer.y *1.5 + game.config.height / 1.25 );
     }
     // Milieu Haut
     else if( orientation == 1 ){
-        camera.centerOn( layer.x *1.6, layer.y *1.5 + game.config.height / 1.25 );
+        cameraEmpty.setPosition( layer.x *1.6 , layer.y *1.5 + 1080 / 1.25  )
+        // camera.centerOn( layer.x *1.6, layer.y *1.5 + game.config.height / 1.25 );
     }
 
     else if( orientation == 1.5 ){
-        camera.centerOn( layer.x *1.6, layer.y *1.5 );
+        cameraEmpty.setPosition( layer.x *1.6, layer.y *1.5 )
+        // camera.centerOn( layer.x *1.6, layer.y *1.5 );
     }
 
     // Milieu Bas
     else if( orientation == 2 ){
-        camera.centerOn( layer.x *1.6, layer.y *1.5 - game.config.height / 1.25 );
+        cameraEmpty.setPosition( layer.x *1.6 , layer.y *1.5 - 1080 / 1.25  )
+        // camera.centerOn( layer.x *1.6, layer.y *1.5 - game.config.height / 1.25 );
     }
 
     // Bas Gauche
     else if( orientation == 3 ){
-        camera.centerOn( layer.x *1.6 + game.config.width*1.6, layer.y *1.5 - game.config.height / 1.25 );
+        cameraEmpty.setPosition( layer.x *1.6 + 1920*1.6, layer.y *1.5 - 1080 / 1.25  )
+        // camera.centerOn( layer.x *1.6 + game.config.width*1.6, layer.y *1.5 - game.config.height / 1.25 );
     }
 
 
     else if( orientation == 3.5 ){
-        camera.centerOn( layer.x *1.6 + game.config.width*1.6, layer.y *1.5 );
+        cameraEmpty.setPosition( layer.x *1.6 + 1920*1.6, layer.y *1.5 )
+        // camera.centerOn( layer.x *1.6 + game.config.width*1.6, layer.y *1.5 );
     }
 
     // Milier Bas++
     else if(orientation == 4 ){
-        camera.centerOn( layer.x *1.6, layer.y*1.4 - game.config.height / 1.25 );
+        cameraEmpty.setPosition( layer.x *1.6 , layer.y *1.4 - 1080 / 1.25  )
+        // camera.centerOn( layer.x *1.6, layer.y*1.4 - game.config.height / 1.25 );
     }
 
     // A droite
     else if(orientation == 6 ){
-        camera.centerOn( layer.x *1.6 - game.config.width*1.5, layer.y *1.5 );
+        cameraEmpty.setPosition( layer.x *1.6 - 1920*1.5, layer.y *1.5 )
+        // camera.centerOn( layer.x *1.6 - game.config.width*1.5, layer.y *1.5 );
     }
 
     createCameraPos( scene );
+
+    scene.space = new Space( scene, cameraEmpty );
     
 }
 

@@ -10,7 +10,7 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false
+            debug: true
         }
     },
     scene: [Idle, Credit, MainMenu, Stages, Level0, Level1, Level2, Level3, Level4, Level5, UIScene]

@@ -87,5 +87,7 @@ var octoArrive;
 
 // Var adaptation de proportion
 var proportion;
-var proportionW;
-var proportionH;
+var proportionZoom;
+
+// Objet qui va faire se d"placer la camera
+var cameraEmpty;
