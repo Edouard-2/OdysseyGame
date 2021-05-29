@@ -3,38 +3,47 @@ class CelluleEnd extends Phaser.GameObjects.Container {
     constructor( scene, x, y, color ){
 
         super( scene, x, y );
-        this.scene = scene;
-
+        
         this.scene.add.existing( this );
 
+        // Déclaration des variables
+        // La scene actuelle de l'instance
+        this.scene = scene;
+
+        // Couleur de l'objet
         this.color = color;
 
+        // Si elle est en animation
         this.tweenStop = false;
 
-        // console.log(this.scroll)
-        // console.log(this.trans)
-        
-        this.sprite = this.scene.add.sprite( 0 , -4 , 'celluleFin1' ).setScale(1 * proportion);
-        this.sprite2 = this.scene.add.sprite( 0 , -4 , 'celluleFin2' ).setScale(1 * proportion);
-        this.sprite3 = this.scene.add.sprite( 0 , -4 , 'celluleFin3' ).setScale(0.03 * proportion);
-
+        // Pour savoir si c'est la cellule pour finir un niveau
         this.end = true;
+        
+        // Les différents sprites
+        this.sprite = this.scene.add.sprite( 0 , -4 , 'celluleFin1' ).setScale( 1 );
+        this.sprite2 = this.scene.add.sprite( 0 , -4 , 'celluleFin2' ).setScale( 1 * proportion );
+        this.sprite3 = this.scene.add.sprite( 0 , -4 , 'celluleFin3' ).setScale( 0.03 * proportion );
 
+        // Mettre la cellule mère au dessus des autres cellules et le fond
         this.setDepth(101)
-        this.makeColor( color );
 
+        // Accéder a la classe depuis le stage
         this.sprite.parent = this;
         this.sprite3.parent = this;
 
+        // Ajout au container
         this.add( [  this.sprite3, this.sprite, this.sprite2 ] );
-        // console.log(this.sprite)
+
+        // Activation du body
         this.scene.physics.world.enable( this.sprite ); 
         this.scene.physics.world.enable( this.sprite3 ); 
 
+        // Initialisation de la forme du body
         this.sprite3.body.setCircle( this.sprite3.width / 2 - this.sprite3.width / 4 ).setOffset( this.sprite3.width / 4);
         this.sprite.body.setCircle( this.sprite.width / 2 + 200).setOffset( -200 );
-        // this.sprite.setScale(0.19)
 
+        // Initialisation de la couleur et des anims
+        this.makeColor( color );
         this.tweenRond( this.sprite, 1, 5000 );
         this.tweenRond( this.sprite2, -1, 5000 );
     }

@@ -4,33 +4,44 @@ class Barriere extends Phaser.GameObjects.Container {
 
         super( scene, x, y );
 
+        this.scene.add.existing( this );  
+
+        // Déclaration des variables
+        // La scene actuelle de l'instance
         this.scene = scene;
 
+        // Sa couleur
         this.color = color;
 
+        // Changement de son angle
         this.angle = rotation;
 
+        // Son id par rapport aux autres instances
         this.id = id;
 
+        // Pour savoir si c'est une cellule safe
+        this.safe = false;
+
+        // Nom de la cellule
         this.name = "Barriere";
         // console.log(id)
 
-        this.scene.add.existing( this );  
-
-        this.a_pos = [];
-
-        this.safe = false;
-
+        // Création du sprite
         this.sprite = this.scene.add.sprite( 0 , 0 , 'barriere' ).setScale(0.8* proportion,0.6* proportion).setDepth(-2);
 
+        // Creation d'une variable pour accéder a l'instance depuis le sprite
         this.sprite.parent = this;
 
+        // ajout du sprite dans le container
         this.add( this.sprite );
 
+        // Le mettre en avant par rapport au fond
         this.setDepth( 100 )
 
+        // Mettre la physic au sprite
         this.scene.physics.world.enable( this.sprite ); 
 
+        // Si il a un angle !) de 0 alors sont body est différent
         if( this.angle != 0 ){
             this.sprite.setScale(0.8,0.7)
             this.sprite.body.setSize( this.sprite.width/1.2 , this.sprite.height / 5  );
@@ -39,43 +50,29 @@ class Barriere extends Phaser.GameObjects.Container {
             this.sprite.body.setSize( this.sprite.width / 5, this.sprite.height/1.2 );
         }
 
+        // Lui donner la bonne couleur
         this.makeColor( this.color );
 
-        
-
-        // this.tweenRond();
     }
 
     // Position oposé d'un slide de caméra
     inverseCurNode( nbr ){
-        if( nbr == 0 ){
-            nbr = 4;
-        }
-        else if( nbr == 1 ){
-            nbr = 5;
-        }
-        else if( nbr == 2 ){
-            nbr = 6;
-        }
-        else if( nbr == 3 ){
-            nbr = 7;
-        }
-        else if( nbr == 4 ){
-            nbr = 0;
-        }
-        else if( nbr == 5 ){
-            nbr = 1;
-        }
-        else if( nbr == 6 ){
-            nbr = 2;
-        }
-        else if( nbr == 7 ){
-            nbr = 3;
+
+        for (let i = 0; i <= nbr + 4; i++) {
+            if( nbr == 8 ){
+                nbr = 0;
+            }
+            else{
+                nbr++
+            }
         }
         return nbr;
     }
 
+    // Renvoyer le joueur dans une direction
     giveVelocity( obj ){
+
+        // Si le joueur arrive en diagonale
         if( obj.body.velocity.x != 0 && obj.body.velocity.y != 0){
             console.log(obj.curPos)
             if( this.angle != 0 ){
@@ -85,8 +82,9 @@ class Barriere extends Phaser.GameObjects.Container {
             else{
                 obj.body.setVelocityX(obj.body.velocity.x * -1)
             }
-            
         }
+
+        // Si le joueur arrive perpendiculairement
         else{
             console.log("hey")
             obj.curPos = this.inverseCurNode( obj.curPos );
@@ -94,35 +92,25 @@ class Barriere extends Phaser.GameObjects.Container {
         }
     }
 
-    tweenRond(){
-        this.scene.tweens.add({
-            targets: this,
-            angle: 360,
-            duration: 10000,
-            repeat: -1
-        });
-    }
-
+    // Faire apparaitre le body
     display(){
         this.scene.physics.world.enable( this.sprite );
     }
 
+    // Faire disparaitre le body
     hide(){
         this.scene.physics.world.disable( this.sprite );
     }
-    
+
+    // Assigner une couleur au sprite
     makeColor( color ){
         if( color == White ){
             // console.log('white')
-            // this.sprite.play("White");
             this.sprite.setTint( White );
-            
         }
         else if( color == Black ){
             // console.log('black')
-            // this.sprite.play("Black");
             this.sprite.setTint( Black );
-            
         }
     }
 }

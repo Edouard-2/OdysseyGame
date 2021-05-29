@@ -3,12 +3,17 @@ class CelluleMere extends Phaser.GameObjects.Container {
     constructor( scene, x, y, color, bool ){
 
         super( scene, x, y );
-        this.scene = scene;
 
         this.scene.add.existing( this );
 
+        // Déclaration des variables
+        // La scene actuelle de l'instance        
+        this.scene = scene;
+
+        // Couleur de la classe
         this.color = color;
 
+        // Initialisation de la hitbox
         this.hitbox = false;
 
         this.dist = false;
@@ -20,13 +25,14 @@ class CelluleMere extends Phaser.GameObjects.Container {
         this.sprite = this.scene.add.sprite( 0, 0, 'celluleMere' ).setScale(0.5* proportion);
         this.sprite3 = this.scene.add.sprite( 0, 0, 'celluleFin3' ).setScale(0)
 
+        // Ajout au container
         this.add( [ this.fond, this.sprite, this.sprite3 ] );
 
         this.sprite.parent = this;
 
+        // Est ce que c'est la cellule mere de la fin
         if( bool ){
 
-            console.log("vzoHFGIJbzgr")
             this.hitbox = createHitbox( this.scene, 0, 0, 10, 10, true );
 
             this.hitbox.body.setCircle( this.sprite.width/4 ).setOffset( -this.sprite.width/4 )
@@ -40,6 +46,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
             this.add( this.hitbox );
 
         }
+        // Est ce que la cellule est celle du début
         else{
             this.hitbox = createHitbox( this.scene, 0, game.config.height*2, 1000, 10, true );
 
@@ -51,12 +58,14 @@ class CelluleMere extends Phaser.GameObjects.Container {
 
         }
 
+        // Mettre la couleur aproprié
         this.makeColor( color );
 
         // Animation de grossissement (donner un effet de vivant)
         this.createTweenScale();
     }
 
+    // Callback de l'overlap de fin
     endGame( curPlayer, curCellule ){
 
         if( curPlayer.curCellule != curCellule){
@@ -67,6 +76,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
         }
     }
 
+    // Treajectoir du joueur pour la fin du niveau 5
     endTraj( obj ){
         this.scene.event.compareColor();
         obj.body.setVelocity(0)
@@ -97,6 +107,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
         });
     }
 
+    // Mettre a la bonne couleur 
     changeDimension(){
         if( this.overlap ){
             this.overlap = false;
@@ -136,6 +147,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
         }
     }
 
+    // Le faire grandir comme si elle était vivante
     createTweenScale(){
         this.scene.tweens.add({
             targets: this,
@@ -176,6 +188,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
         });
     }
 
+    // Afficher
     display(){
         this.scene.physics.world.enable( this.sprite );
         if( this.firstHitbox ){
@@ -189,6 +202,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
         }
     }
 
+    // Cacher
     hide(){
         
         this.scene.physics.world.disable( this.sprite );
@@ -203,6 +217,7 @@ class CelluleMere extends Phaser.GameObjects.Container {
         }
     }
 
+    // Mettre a la bonne couleur
     makeColor( color ){
         if( color == White ){
             // console.log('white')

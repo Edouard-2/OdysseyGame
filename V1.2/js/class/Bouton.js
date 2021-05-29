@@ -4,62 +4,33 @@ class Bouton extends Phaser.GameObjects.Container{
 
         super( scene, x, y );
 
+        this.scene.add.existing( this );
+
+        // Déclaration des variables
+        // La scene actuelle de l'instance
         this.scene = scene;
 
         this.ScaleY = scale;
 
-        this.scene.add.existing( this );
-
-        this.setSize( 10 );
-
-        this.bg = scene.add.image( 0,0,'Bouton' ).setTint( White );
-
-        // this.bg.setTint('0x9E90EE')
-
+        // Nom du bouton
         this.name = name;
 
+        // Fond du bouton
+        this.bg = scene.add.image( 0,0,'Bouton' ).setTint( White );
+
+        // Texte écrit sur le bouton
         this.text = scene.add.text( 0, 0, name, { fontFamily: "SaintTropez",fontSize: taille*80 + 'px', color : BlackText }).setOrigin( 0.5, 0.53 );
 
+        // Ajout du fond et du text dans le container
         this.add( [this.bg, this.text] );
 
+        // Faire l'animation d'arrivé des boutons
         this.bg.setScale(0);
         this.text.setScale(0);
         this.addTweens(); 
-
-        this.graphics = this.scene.add.graphics();
-        this.follower = { t: 0, vec: new Phaser.Math.Vector2() };
-
-        // this.points = [
-        //     this.x*0.77 +( -this.bg.width / 8), this.y*0.85 + (-this.bg.height / 8),
-        //     this.x*0.77 + this.bg.width, this.y*0.85 + (-this.bg.height / 8),
-        //     this.x*0.77 + this.bg.width, this.y*0.85 + this.bg.height,
-        //     this.x*0.77 +( -this.bg.width / 8),this.y*0.85 + this.bg.height,
-        //     this.x*0.77 +( -this.bg.width / 8), this.y*0.85 + (-this.bg.height / 8),
-        // ];
-    
-        this.curve = new Phaser.Curves.Path(50, 500);
-
-        this.scene.tweens.add({
-            targets: this.follower,
-            t: 1,
-            ease: 'Sine.easeInOut',
-            duration: 2000,
-            // yoyo: true,
-            repeat: -1,
-            // onYoyo: ()=>{
-            //     graphics.clear();
-            // },
-            // onRepeat: ()=>{
-            //     graphics.clear();
-            // }
-        });
-
     }
 
-    addObj(obj){
-        this.add(obj);
-    }
-
+    // Creation animaion d'apparition
     addTweens(){
         this.tween = { 
             0:  this.scene.tweens.add({

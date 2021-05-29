@@ -10,11 +10,11 @@ class Dialogue extends Phaser.GameObjects.Container {
         // Tout les dialogues
         this.dialData =  {
             0 : "... ",
-            1 : " Tous le monde est la.",
+            1 : " Tout le monde est la.",
             2 : " Il ne manque plus que toi.",
             3 : " Monte vite avant que je parte ...",
-            4 : " Saute je vais pas tarder a partir ...",
-            6 : " Tu es revenu ! Aller, vien avant que je parte pour de bon ..."
+            4 : " Saute ! Je ne vais pas tarder à partir ...",
+            6 : " Tu es revenu ! Allez, viens avant que je parte pour de bon ..."
         };
 
         // Le dialogue courent

@@ -11,7 +11,7 @@ class Space extends Phaser.GameObjects.Container {
         this.hit.push( createHitbox( this.scene, -( game.config.width * 2 / proportionZoom )-900, game.config.height -300, 100, game.config.height * 6 / proportionZoom ) );
 
         // Haut
-        this.hit.push( createHitbox( this.scene, 0-900, -game.config.height*2/proportionZoom -300, game.config.width*6, 100  ) );
+        this.hit.push( createHitbox( this.scene, 0-900, -game.config.height*2/proportionZoom -600, game.config.width*6, 100  ) );
 
         // Droite
         this.hit.push( createHitbox( this.scene, ( game.config.width * 3 / proportionZoom )-900, game.config.height -300, 100, game.config.height * 6 / proportionZoom ) );

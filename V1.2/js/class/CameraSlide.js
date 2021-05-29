@@ -3,23 +3,29 @@ class CameraSlide extends Phaser.GameObjects.Container {
     constructor( scene, x, y, color, angle, dir, id ){
 
         super( scene, x, y );
+        
+        this.scene.add.existing( this ); 
 
+        // Déclaration des variables
+        // La scene actuelle de l'instance
         this.scene = scene;
 
+        // Son id par rapport aux autres instances
         this.id = id;
-        console.log(id)
-        console.log("camera slide")
 
+        // Sauvegarder l'angle de l'instance
         this.varAngle = angle;
 
-        this.scene.add.existing( this );  
-
+        // La direction du slide de camera a faire
         this.dir = dir;
 
-        this.inverseDir = this.inverse( dir );
-
+        // Couleur pour savoir quand l'activer en fonction de la dimension
         this.color = color;
 
+        // Avoir la direction opposé
+        this.inverseDir = this.inverse( dir );
+
+        // Creation des hitbox en fonction de l'angle
         if( angle == 0){
             this.hitBox = createHitbox( this.scene, 0, 0, 100, game.config.width*4, true );
             this.hitBoxDeath = createHitbox( this.scene, -100, 0, 100, game.config.width*4, true );
@@ -29,13 +35,17 @@ class CameraSlide extends Phaser.GameObjects.Container {
             this.hitBoxDeath = createHitbox( this.scene, 0, -100, game.config.width*4, 100, true );
         }
         
+        // Variable pour pouvoir accès a la classe depuis le sprite
         this.hitBox.parent = this;
         this.hitBoxDeath.parent = this;
 
+        // Ajout des hitbox au container
         this.add( [ this.hitBox, this.hitBoxDeath ] );
 
+        // Reglage de la profondeur
         this.setDepth(100)
 
+        // Ajout de la physique 
         this.scene.physics.world.enable( this.hitBox ); 
 
     }
@@ -69,6 +79,7 @@ class CameraSlide extends Phaser.GameObjects.Container {
         }
     }
 
+    // Mettre le côté opposé du numéro d'un rectangle
     inverse( nbr ){
         if( nbr == 0 ){
             nbr = 2;
@@ -85,10 +96,12 @@ class CameraSlide extends Phaser.GameObjects.Container {
         return nbr;
     }
 
+    // Faire apparaitre le body
     display(){
         this.scene.physics.world.enable( this.hitBox );
     }
 
+    // Faire disparaitre le body
     hide(){
         this.scene.physics.world.disable( this.hitBox );
     }
