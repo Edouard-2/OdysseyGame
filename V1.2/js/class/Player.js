@@ -625,6 +625,10 @@ class Player extends Phaser.GameObjects.Container {
         this.x = this.safeCellule.a_pos[0].x;
         this.y = this.safeCellule.a_pos[0].y;
         // // console.log(this.curCellule)
+        if( this.scene.level == 2 && this.scene.tabWhite.tuto[0].touche.scale == 0 && gameNav.niveau < 3 ){
+            console.log("heyeye")
+            this.scene.tabWhite.tuto[0].tweenScale( true );
+        }
         this.safeCellule.tweenScaleFond( true );
         this.setAngle(0);
     }

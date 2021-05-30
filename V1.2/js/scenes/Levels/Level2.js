@@ -50,7 +50,8 @@ class Level2 extends Phaser.Scene {
             rebond : [],
             end: [],
             cameraSlide:[],
-            celluleMere: []
+            celluleMere: [],
+            tuto:[],
         };
 
         this.tabBlack = {
@@ -62,7 +63,8 @@ class Level2 extends Phaser.Scene {
             end: [],
             cameraSlide:[],
             celluleMere:[],
-            celluleMere: []
+            celluleMere: [],
+            tuto:[],
         };
 
         this.map = false;

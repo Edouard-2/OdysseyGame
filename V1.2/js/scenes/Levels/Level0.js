@@ -50,7 +50,8 @@ class Level0 extends Phaser.Scene {
             rebond : [],
             end: [],
             cameraSlide:[],
-            celluleMere:[]
+            celluleMere:[],
+            tuto:[],
         };
 
         this.tabBlack = {
@@ -61,7 +62,8 @@ class Level0 extends Phaser.Scene {
             rebond : [],
             end: [],
             cameraSlide:[],
-            celluleMere:[]
+            celluleMere:[],
+            tuto:[],
         };
 
         this.map = false;
@@ -69,7 +71,7 @@ class Level0 extends Phaser.Scene {
         
         this.levelCreate = new Level(this, 0);
         
-        this.dial = new Dialogue(this, this.tabBlack.celluleMere[0].x, this.tabBlack.celluleMere[0].y )
+        this.dial = new Dialogue(this, this.tabBlack.celluleMere[0].x, this.tabBlack.celluleMere[0].y);
 
         this.event.readyJump = false;
 
@@ -98,6 +100,17 @@ class Level0 extends Phaser.Scene {
             this.dial.spawnDial();
         }, 1000);
         
+    }
+
+    activeTouche(){
+        this.tabWhite.tuto.forEach( touche => {
+            if( touche.name == "Z" ){
+                touche.tweenScale( true );
+            }
+            else{
+                touche.tweenScale();
+            }
+        });
     }
 
     tweenUp(){

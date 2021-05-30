@@ -224,6 +224,10 @@ class Dialogue extends Phaser.GameObjects.Container {
             this.dialTextUp.text = "";
             this.dialTextDown.text = "";
             if( this.transReady ){
+                if( this.scene.level == 0 ){
+                    // Apparition des touches
+                    this.scene.activeTouche();
+                }
                 this.transReady = false;
                 this.espace.setVisible(false)
                 this.scene.activePropulse();

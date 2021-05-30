@@ -54,6 +54,7 @@ class Level5 extends Phaser.Scene {
             end: [],
             cameraSlide:[],
             celluleMere:[],
+            tuto:[],
             
         };
 
@@ -66,6 +67,7 @@ class Level5 extends Phaser.Scene {
             end: [],
             cameraSlide:[],
             celluleMere:[],
+            tuto:[],
         };
 
         this.map = false;

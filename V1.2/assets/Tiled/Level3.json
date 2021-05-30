@@ -23,6 +23,17 @@
         }, 
         {
          "draworder":"topdown",
+         "id":10,
+         "name":"Touche",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":3,
          "name":"Octogone",
          "objects":[
@@ -423,7 +434,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":10,
+ "nextlayerid":11,
  "nextobjectid":61,
  "orientation":"orthogonal",
  "renderorder":"right-down",

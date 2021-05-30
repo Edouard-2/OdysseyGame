@@ -912,6 +912,10 @@ function createSlide( scene, x, y, tab, angle, color, dir, id, player ){
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
+function createHelp( scene, x, y, tab, touche ){
+    var Tuto = new Touche( scene, x, y, touche );
+    tab.push(Tuto);
+}
 // Dès que la joueur touche le centre d'une planète
 function contact( curPlayer, curSprite ){
     // Permettre le déplacement lorsqu'il est en contact avec la cellule octogonale
@@ -988,6 +992,10 @@ function contactBarriere( curPlayer, curBarriere ){
     
         // Amener le joueur au centre du penatgone
         curBarriere.parent.giveVelocity( curPlayer );
+        if( curBarriere.scene.level == 2 && curBarriere.scene.tabWhite.tuto[0].touche.scale == 0 && gameNav.niveau < 3){
+            console.log("heyeye")
+            curBarriere.scene.tabWhite.tuto[0].tweenScale( true );
+        }
     }
 
 

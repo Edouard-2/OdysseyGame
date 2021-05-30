@@ -395,6 +395,17 @@
         }, 
         {
          "draworder":"topdown",
+         "id":11,
+         "name":"Touche",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":3,
          "name":"Rebond",
          "objects":[
@@ -835,7 +846,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":11,
+ "nextlayerid":12,
  "nextobjectid":267,
  "orientation":"orthogonal",
  "renderorder":"right-down",

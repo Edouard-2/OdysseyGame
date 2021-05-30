@@ -19,6 +19,8 @@ class Map {
         else if( level == "Level0" ){
             this.createTile();
 
+            this.createTutoHelper();
+
             this.createOctogonesLayer();
 
             this.createCelluleMereLayer();
@@ -31,10 +33,11 @@ class Map {
 
         // Les autres niveaux
         else{
-
             this.createTile();
-            
+
             this.createEndLayer();
+            
+            this.createTutoHelper();
 
             this.createOctogonesLayer();
 
@@ -43,7 +46,7 @@ class Map {
             this.createBarriereLayer();
 
             this.createBackgroundTransistion();
-            
+
         }
     }
 
@@ -86,6 +89,7 @@ class Map {
             this.tileSet = this.map.addTilesetImage( 'tileSet', 'tileSet' );
 
             // Creation des calques objet
+            this.Touche = this.map.getObjectLayer( 'Touche' )[ 'objects' ];
             this.Octogone = this.map.getObjectLayer( 'Octogone' )[ 'objects' ];
             this.CelluleMere = this.map.getObjectLayer( 'CelluleMere' )[ 'objects' ];
             this.Barriere = this.map.getObjectLayer( 'Barriere' )[ 'objects' ];
@@ -95,6 +99,7 @@ class Map {
             this.tileSet = this.map.addTilesetImage( 'tileSet', 'tileSet' );
 
             // Creation des calques objet
+            this.Touche = this.map.getObjectLayer( 'Touche' )[ 'objects' ];
             this.Octogone = this.map.getObjectLayer( 'Octogone' )[ 'objects' ];
             this.Rebond = this.map.getObjectLayer( 'Rebond' )[ 'objects' ];
             this.Barriere = this.map.getObjectLayer( 'Barriere' )[ 'objects' ];
@@ -139,6 +144,23 @@ class Map {
                 }
                 else if( End.properties[1] && End.properties[1].name == "end" ){
                     createEnd( this.scene, End.x*1.6, End.y*1.5, this.color, this.tab.end, player );
+                }
+                
+            }
+        });
+    }
+
+    // Creation des touches sur l'écran
+    createTutoHelper(){
+        this.Touche.forEach(Touche => {
+
+            if( Touche.properties ){
+
+                if( Touche.properties[0] ){
+                    this.checkColor( Touche.properties[0] );
+                }
+                if( Touche.properties[1] ){
+                    createHelp( this.scene, Touche.x*1.6, Touche.y*1.5, this.tab.tuto, Touche.properties[1].value );
                 }
                 
             }

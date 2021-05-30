@@ -53,11 +53,12 @@ class Idle extends Phaser.Scene {
         this.load.image('rebondCercleFond', 'assets/Sprites/rebondCercleFond.png');
         this.load.image('rebondFond', 'assets/Sprites/rebondFond.png');
 
-        this.load.image('triangle', 'assets/Sprites/Triangle.png');
-
         this.load.image('barriere', 'assets/Sprites/Barriere.png');
 
-        this.load.image('pentagone', 'assets/Sprites/Pentagone.png');
+        this.load.image('Espacetuto', 'assets/Sprites/EspaceControlerAffiche.png');
+        this.load.image('Ztuto', 'assets/Sprites/ZControlerAffiche.png');
+        this.load.image('Qtuto', 'assets/Sprites/QControlerAffiche.png');
+        this.load.image('Dtuto', 'assets/Sprites/DControlerAffiche.png');
 
         //////////////////////////// Cellule planète fin de niveau ////////////////////////////
         this.load.image('celluleFin1', 'assets/Sprites/celluleFin.png');

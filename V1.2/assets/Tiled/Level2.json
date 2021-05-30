@@ -22,6 +22,40 @@
         }, 
         {
          "draworder":"topdown",
+         "id":10,
+         "name":"Touche",
+         "objects":[
+                {
+                 "gid":19,
+                 "height":200,
+                 "id":59,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"string",
+                         "value":"White"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"ESPACE"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":200,
+                 "x":2800,
+                 "y":7800
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":3,
          "name":"Octogone",
          "objects":[
@@ -663,8 +697,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":10,
- "nextobjectid":59,
+ "nextlayerid":11,
+ "nextobjectid":60,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",
@@ -679,7 +713,7 @@
          "margin":0,
          "name":"tileSet",
          "spacing":0,
-         "tilecount":25,
+         "tilecount":1,
          "tileheight":200,
          "tiles":[
                 {
@@ -696,6 +730,19 @@
                          "value":135
                         }]
                 }],
+         "tilewidth":200
+        }, 
+        {
+         "columns":5,
+         "firstgid":10,
+         "image":"tileSet.png",
+         "imageheight":1000,
+         "imagewidth":1000,
+         "margin":0,
+         "name":"tileSet",
+         "spacing":0,
+         "tilecount":25,
+         "tileheight":200,
          "tilewidth":200
         }],
  "tilewidth":200,

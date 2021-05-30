@@ -66,6 +66,86 @@
         }, 
         {
          "draworder":"topdown",
+         "id":6,
+         "name":"Touche",
+         "objects":[
+                {
+                 "gid":10,
+                 "height":200,
+                 "id":8,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"string",
+                         "value":"White"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"Q"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":200,
+                 "x":2600,
+                 "y":6200
+                }, 
+                {
+                 "gid":10,
+                 "height":200,
+                 "id":9,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"string",
+                         "value":"White"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"D"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":200,
+                 "x":5000,
+                 "y":6200
+                }, 
+                {
+                 "gid":10,
+                 "height":200,
+                 "id":10,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"string",
+                         "value":"White"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"Z"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":200,
+                 "x":3800,
+                 "y":5536
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":3,
          "name":"Barriere",
          "objects":[
@@ -132,8 +212,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":6,
+ "nextlayerid":7,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",

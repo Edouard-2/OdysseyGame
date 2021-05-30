@@ -71,7 +71,7 @@ var objVelo = {
 
 // Game Keys Nav
 var gameNav = {
-    niveau: 3,
+    niveau: 2,
     world: 1
 };
 
