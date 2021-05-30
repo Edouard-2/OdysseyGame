@@ -1,6 +1,7 @@
 class Map {
     constructor( scene, level, bool ){
 
+        // Déclaration des variables
         this.scene = scene;
         this.level = level;
         this.map = false;
@@ -24,14 +25,7 @@ class Map {
 
             this.createBarriereLayer();
 
-            this.scene.bg = this.scene.add.image( game.config.width / 2, game.config.height / 2, 'Background2').setScale(6).setScrollFactor(0.10);
-
-            if(player.contour == Black){
-                this.scene.bg.setTint(Black);
-            }
-            else{
-                this.scene.bg.setTint(White);
-            }
+            this.createBackgroundTransistion();
 
         }
 
@@ -46,13 +40,16 @@ class Map {
 
             this.createRebondsLayer();
 
-            this.createTriangleLayer();
-
             this.createBarriereLayer();
 
-            this.createPentagoneLayer();
+            this.createBackgroundTransistion();
             
-            this.scene.bg = this.scene.add.image( game.config.width / 2, game.config.height / 2, 'Background2').setScale(6).setScrollFactor(0.10);
+        }
+    }
+
+    // Creation d'un background de la couleur opposé au background du niveau pour faire un effet 
+    createBackgroundTransistion(){
+        this.scene.bg = this.scene.add.image( game.config.width / 2, game.config.height / 2, 'Background2').setScale(6).setScrollFactor(0.10);
 
             if(player.contour == Black){
                 this.scene.bg.setTint(Black);
@@ -60,9 +57,9 @@ class Map {
             else{
                 this.scene.bg.setTint(White);
             }
-        }
     }
 
+    // Vérifier si la couleur de la planète et assigner le bon tableau
     checkColor(obj){
         
         if( obj.value == "White" ){
@@ -75,6 +72,7 @@ class Map {
         }
     }
 
+    // Creation de la map tile et des layers
     createTile( bool ){
         // Creation de la map
         this.map = this.scene.make.tilemap( { key: this.level } );
@@ -99,13 +97,12 @@ class Map {
             // Creation des calques objet
             this.Octogone = this.map.getObjectLayer( 'Octogone' )[ 'objects' ];
             this.Rebond = this.map.getObjectLayer( 'Rebond' )[ 'objects' ];
-            this.Triangle = this.map.getObjectLayer( 'Triangle' )[ 'objects' ];
             this.Barriere = this.map.getObjectLayer( 'Barriere' )[ 'objects' ];
-            this.Pentagone = this.map.getObjectLayer( 'Pentagone' )[ 'objects' ];
             this.End = this.map.getObjectLayer( 'End' )[ 'objects' ];
         }
     }
 
+    // Creation du layer stage
     createStageLayer(){
         // // Faire spawn les planètes bleu
         // console.log(this.Stage)
@@ -125,6 +122,7 @@ class Map {
         });
     }
 
+    // Creation des cellules de fin de niveau
     createEndLayer(){
         this.End.forEach(End => {
             // console.log(End)
@@ -147,6 +145,7 @@ class Map {
         });
     }
 
+    // Creation des différentes cellules octogonale
     createOctogonesLayer(){
         
         // Faire spawn les planètes bleu
@@ -188,6 +187,7 @@ class Map {
         });
     }
 
+    // Creation des cellule rebond
     createRebondsLayer(){
         this.Rebond.forEach(Rebond => {
             if( Rebond.properties ){
@@ -197,15 +197,7 @@ class Map {
         });
     }
 
-    createTriangleLayer(){
-        this.Triangle.forEach(Triangle => {
-            if( Triangle.properties ){
-                this.checkColor( Triangle.properties[0] );
-            }
-            createTriangle( this.scene, Triangle.x*1.6, Triangle.y*1.5, this.color, this.tab.triangle, player );
-        });
-    }
-
+    // Creation des barrières
     createBarriereLayer(){
         this.Barriere.forEach(Barriere => {
             if( Barriere.properties ){
@@ -226,21 +218,7 @@ class Map {
         });
     }
 
-    createPentagoneLayer(){
-        this.Pentagone.forEach(Pentagone => {
-            if( Pentagone.properties ){
-                this.checkColor( Pentagone.properties[0] );
-            }
-            if( Pentagone.properties[0] && Pentagone.properties[1] ){
-                createPentagone( this.scene, Pentagone.x*1.6, Pentagone.y*1.5, Pentagone.properties[1].value, this.color, this.tab.triangle, player );
-            }
-            else{
-                createPentagone( this.scene, Pentagone.x*1.6, Pentagone.y*1.5, 0, this.color, this.tab.triangle, player );
-            }
-            
-        });
-    }
-
+    // Creation de la cellule mere
     createCelluleMereLayer(){
         this.CelluleMere.forEach(CelluleMere => {
             if( CelluleMere.properties ){

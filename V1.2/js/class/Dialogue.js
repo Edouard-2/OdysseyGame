@@ -3,9 +3,12 @@ class Dialogue extends Phaser.GameObjects.Container {
     constructor( scene, x, y, color, bool ){
 
         super( scene, x, y );
-        this.scene = scene;
-
+        
         this.scene.add.existing( this );
+        
+        // Déclaration des variables
+        // La scene actuelle de l'instance
+        this.scene = scene;
 
         // Tout les dialogues
         this.dialData =  {
@@ -49,9 +52,9 @@ class Dialogue extends Phaser.GameObjects.Container {
         if( bool ){
             this.bool = bool;
             console.log("heybro")
-            var x1 = game.config.width*1.3;
-            var x2 = -game.config.width*1.5;
-            var x3 = game.config.width / 2.5;
+            var x1 = 1920 * proportionZoom *1.3;
+            var x2 = -1920 * proportionZoom *1.5;
+            var x3 = 1920 * proportionZoom  / 2.5;
 
             var y = -game.config.height * 1.3;
             this.indexCurDial = 6;
@@ -60,19 +63,20 @@ class Dialogue extends Phaser.GameObjects.Container {
         }
         else{
             this.bool = false;
-            var x1 = -game.config.width*1.3;
-            var x2 = -game.config.width*1.5;
-            var x3 = -game.config.width*2;
+            var x1 = -1920 * proportionZoom *1.3;
+            var x2 = -1920 * proportionZoom *1.5;
+            var x3 = -1920 * proportionZoom *2;
 
             var y = 0;
         }
 
-        this.dialTextBlack = this.scene.add.text( x2 / proportion, y, 'NON REVIENS ', { fontFamily: "BalbeerRustic", fontSize: 300 * proportion +'px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5);
-        
-        this.dialTextUp = this.scene.add.text( x3 / proportion, y, '', { fontFamily: "BalbeerRustic", fontSize: 200* proportion + 'px', fontStyle: "bold", color: WhiteText } ).setOrigin(0);
-        this.dialTextDown = this.scene.add.text( x3 / proportion, y + this.dialTextUp.height, '', { fontFamily: "BalbeerRustic", fontSize: 200* proportion + 'px', fontStyle: "bold", color: WhiteText } ).setOrigin(0);
-        this.espace = this.scene.add.text( x1 / proportion, y + this.dialTextUp.height*2, 'ESPACE pour passer', { fontFamily: "BalbeerRustic", fontSize: 100* proportion + 'px', fontStyle: "bold", color: WhiteText } ).setVisible(false).setOrigin(0);
+        // Creation des texte ingame
+        this.dialTextBlack = this.scene.add.text( x2 / proportionZoom, y, 'NON REVIENS ', { fontFamily: "BalbeerRustic", fontSize: 300 * proportionZoom +'px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5);
+        this.dialTextUp = this.scene.add.text( x3 / proportionZoom, y, '', { fontFamily: "BalbeerRustic", fontSize: 200* proportionZoom + 'px', fontStyle: "bold", color: WhiteText } ).setOrigin(0);
+        this.dialTextDown = this.scene.add.text( x3 / proportionZoom, y + this.dialTextUp.height, '', { fontFamily: "BalbeerRustic", fontSize: 200* proportionZoom + 'px', fontStyle: "bold", color: WhiteText } ).setOrigin(0);
+        this.espace = this.scene.add.text( x1 / proportionZoom, y + this.dialTextUp.height*2, 'ESPACE pour passer', { fontFamily: "BalbeerRustic", fontSize: 100* proportionZoom + 'px', fontStyle: "bold", color: WhiteText } ).setVisible(false).setOrigin(0);
 
+        // Attribution de la couleur
         if( color ){
             if( color == White ){
                 this.color1 = BlackText;
@@ -88,11 +92,12 @@ class Dialogue extends Phaser.GameObjects.Container {
             this.espace.setColor( this.color2 );
         }
         
-
         this.setDepth(100);
 
+        // Ajout dans le container
         this.add( [ this.dialTextBlack, this.dialTextUp, this.dialTextDown, this.espace ] );
 
+        // Faire spawn dicrectement le dialogue si c'est le level 0
         if( !this.bool ){
             this.scene.time.delayedCall( 1000, ()=>{ 
                 // Faire spawn le dialogue
@@ -102,6 +107,7 @@ class Dialogue extends Phaser.GameObjects.Container {
         }
     }
 
+    // Faire la lecture de dialogue pour les afficher avec un delay
     spawnDial( bool ){
         
         var iCoint = 0;
@@ -121,6 +127,7 @@ class Dialogue extends Phaser.GameObjects.Container {
         this.indexCurChara = 0;
     }
 
+    // Afficher le dialogue sans couper les mots
     addTextDial( i ){
 
         var text = this.curDataDial.charAt(i)
@@ -193,6 +200,7 @@ class Dialogue extends Phaser.GameObjects.Container {
         }
     }
 
+    // Vérifié si le joueur appuy sur espace pour passer / fermer le dialogue
     update(){
 
         // Appuyer sur espace pour continuer

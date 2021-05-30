@@ -4,42 +4,55 @@ class Rebond extends Phaser.GameObjects.Container {
 
         super( scene, x, y );
 
+        this.scene.add.existing( this );  
+
+        // Déclaration des variables
+        // La scene actuelle de l'instance
         this.scene = scene;
 
         this.color = color;
-
-        this.scene.add.existing( this );  
 
         this.a_pos = [];
 
         this.safe = false;
 
+        // Variable pour avoir un angle aléatoire
         this.varAngle = getRand( 360 );
+        
+        // Sprites
         this.rond = this.scene.add.sprite( 0 , 0 , 'rebondFond' ).setScale(0).setDepth(-2);
         this.fond = this.scene.add.sprite( 0 , 0 , 'rebondCercleFond' ).setDepth(-2);
         this.sprite = this.scene.add.sprite( 0 , 0 , 'rebond2' ).setDepth(-2).setAngle( this.varAngle );
         this.sprite2 = this.scene.add.sprite( 0 , 0 , 'rebond2' ).setDepth(-2).setAngle( this.varAngle + 180 );
 
+        // Avoir accès a la class depuis le sprite
         this.sprite.parent = this;
         this.sprite2.parent = this;
 
+        // Ajout au container
         this.add( [ this.sprite , this.sprite2, this.rond, this.fond ] );
 
         this.setDepth(100)
 
+        // Donner la physique au sprite
         this.scene.physics.world.enable( this.sprite ); 
         this.scene.physics.world.enable( this.sprite2 ); 
 
+        // Donner la forme ronde au body
         this.sprite.body.setCircle( this.sprite.width / 2 );
         this.sprite2.body.setCircle( this.sprite2.width / 2 + 200 ).setOffset( -200 );
 
+        // Mettre la bonne couleur
         this.makeColor( this.color );
 
+        // Creer les pos utile pour faire des rebonds
         this.createPosCellule();
 
+        // Creation de l'animation
         this.tweenRond( this.sprite2, -1, 5000 );
     }
 
+    // Animation si le joueur se rapproche de la cellule(elle se remplit)
     tweenClose(){
         // console.log("fermé")
         this.tweenStop = true;
@@ -53,6 +66,7 @@ class Rebond extends Phaser.GameObjects.Container {
         });
     }
 
+    // Animation qui fait tourner les sprites
     tweenRond( obj, dir, time ){
         // console.log("heu")
         var angle = obj.angle;
@@ -65,16 +79,19 @@ class Rebond extends Phaser.GameObjects.Container {
         });
     }
 
+    // Apparaitre
     display(){
         this.scene.physics.world.enable( this.sprite );
         this.scene.physics.world.enable( this.sprite2 );
     }
 
+    // Cacher
     hide(){
         this.scene.physics.world.disable( this.sprite );
         this.scene.physics.world.disable( this.sprite2 );
     }
     
+    // Mettre a la bonne couleur
     makeColor( color ){
         if( color == White ){
             // console.log('white')
@@ -96,6 +113,7 @@ class Rebond extends Phaser.GameObjects.Container {
         }
     }
 
+    // initialiser les poses
     createPosCellule() {
         this.a_pos.push({
             id: 0,

@@ -3,16 +3,29 @@ class Octogone extends Phaser.GameObjects.Container {
     constructor( scene, x, y, color, bool, value, ori, end, cameraID, transDial ){
 
         super( scene, x, y );
-        this.scene = scene;
-
+        
         this.scene.add.existing( this );
+        
+        // Déclaration des variable
+        this.scene = scene;
 
         this.color = color;
 
         this.cameraID = cameraID;
+        
+        this.a_pos = [];
 
-        this.setDepth(100)
+        this.saturation = 1;
 
+        this.safe = true;
+        
+        if( end ){
+            // console.log("end true")
+            this.end = true;
+        }
+        this.end = false;
+
+        // Creation d'une hitbox pour la transition de camera
         if( bool ){
             this.trans = true;
             this.scroll = value;
@@ -20,6 +33,7 @@ class Octogone extends Phaser.GameObjects.Container {
             this.cameraHitCheck = false;
         }
 
+        // Creation d'une hitbox pour un repositionnement de camera (si le joueur a esquiver une transition de camera)
         else if ( cameraID || cameraID == 0 ){
             this.trans = false;
             this.scroll = false;
@@ -28,6 +42,7 @@ class Octogone extends Phaser.GameObjects.Container {
             this.cameraHitCheck = this.addCameraDetection();
         }
 
+        // Sinon pas de camera change
         else{
             this.trans = false;
             this.scroll = false;
@@ -35,35 +50,16 @@ class Octogone extends Phaser.GameObjects.Container {
             this.secondHitbox = false;
             this.cameraHitCheck = false;
         }
-
-        // console.log(this.scroll)
-        // console.log(this.trans)
-
-        this.a_pos = [];
-
-        this.saturation = 1;
-
-        this.Green = "0x4DF732";
-
-        this.safe = true;
         
+        // Sprites
         this.fond = this.scene.add.sprite( 0 , -4 , 'receptriceFond' ).setScale(0);
         this.sprite = this.scene.add.sprite( 0 , -4 , 'receptrice' ).setScale( 1 );
-
-        // console.log(this.spriteCenter)
-        // this.sprite.setDepth(10);
-        if( end ){
-            // console.log("end true")
-            this.end = true;
-        }
-        this.end = false;
-
-        this.makeColor( color );
-
-        this.createPosCellule();
-
+        
+        this.setDepth(100)
+        
         this.sprite.parent = this;
         
+        // Ajout au container
         if( this.cameraHitCheck ){
             // console.log('hitititiit')
             this.add( [ this.sprite, this.cameraHitCheck, this.fond ] );
@@ -78,10 +74,17 @@ class Octogone extends Phaser.GameObjects.Container {
         this.sprite.body.setCircle( this.sprite.width / 2);
         // this.sprite.setScale(0.19)
 
+        // Fonctions pour cree les différentes poses
+        this.createPosCellule();
+        
+        // Mettre a la bonne couleur
+        this.makeColor( color );
+
         // Animation de grossissement (donner un effet de vivant)
         this.createTweenScale();
     }
 
+    // Donner un effet organique aux cellules
     createTweenScale(){
         this.scene.tweens.add({
             targets: this,
@@ -95,6 +98,7 @@ class Octogone extends Phaser.GameObjects.Container {
         });
     }
 
+    // Agrandir le fond lorsque le joueur intéragit avec la cellule
     tweenScaleFond( bool ){
         console.log(bool)
         if( bool ){
@@ -114,12 +118,14 @@ class Octogone extends Phaser.GameObjects.Container {
         });
     }
 
+    // Camrea slide detection
     addCameraDetection(){
         var cameraHitCheck =  createHitbox( this.scene, 0,0, 500, 500, true);
         this.scene.physics.add.overlap(player, cameraHitCheck, null, this.cameraReposition, this);
         return cameraHitCheck;
     }
 
+    // Repositionnnement de la camera
     cameraReposition(){
         if( this.scene.indexCamera != this.cameraID && player.curScroll != this.cameraID ){
             console.log("diffffffff")
@@ -130,6 +136,7 @@ class Octogone extends Phaser.GameObjects.Container {
         }
     }
 
+    // Afficher le body
     display(){
         this.scene.physics.world.enable( this.sprite );
         if( this.firstHitbox ){
@@ -143,6 +150,7 @@ class Octogone extends Phaser.GameObjects.Container {
         }
     }
 
+    // Cacher le body
     hide(){
         
         this.scene.physics.world.disable( this.sprite );
@@ -157,6 +165,7 @@ class Octogone extends Phaser.GameObjects.Container {
         }
     }
 
+    // Ajoutes des hitbox de transition
     addHitBox( orientation ){
         if( orientation == 0 ){
             this.firstHitbox = this.createHitBoxCamera( 150, 300, -200, 0, 1);
@@ -176,6 +185,7 @@ class Octogone extends Phaser.GameObjects.Container {
         }
     }
 
+    // Première hitbox qui verrifie si on est sur le bon positionnement de la camera
     firstHit( curPLayer ){
         if( curPLayer.curScroll == this.scroll && curPLayer.tweenCameraVar ){
             player.checkCamera( this, true );
@@ -183,6 +193,7 @@ class Octogone extends Phaser.GameObjects.Container {
         }
     }
     
+    // Deuxieme fait une transition
     secondHit( curPLayer ){
         if( curPLayer.curScroll != this.scroll && curPLayer.tweenCameraVar ){
             player.checkCamera( this );
@@ -191,6 +202,7 @@ class Octogone extends Phaser.GameObjects.Container {
         }
     }
 
+    // Creation des hitbox camera
     createHitBoxCamera( w, h, x, y, nbr ){
         this.hitbox = this.scene.add.sprite( x, y, "" ).setAlpha(0);
         this.scene.physics.world.enable( this.hitbox ); 
@@ -206,6 +218,7 @@ class Octogone extends Phaser.GameObjects.Container {
         return this.hitbox;
     }
 
+    // Mettre a la bonne couleur
     makeColor( color ){
         if( color == White ){
             // console.log('white')
@@ -226,6 +239,7 @@ class Octogone extends Phaser.GameObjects.Container {
         }
     }
 
+    // Creer les différentes poses ou le joueur peut se poser autour de la cellule
     createPosCellule() {
         this.a_pos.push({
             id: 0,

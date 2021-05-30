@@ -10,11 +10,6 @@ class Player extends Phaser.GameObjects.Container {
         // Init variable de la scene de jeu
         this.scene = scene;
 
-        // // console.log(this.depth)
-        this.contour = this.scene.add.sprite( 0, 0, 'playerContour' ).setScale(0.6* proportion);
-        
-        this.sprite = this.scene.add.sprite( 0, 0, 'player' ).setScale(0.5* proportion);
-
         // Ceration des backgrounds
         this.indexTransWhite = -1;
         this.indexTransBlack = -1;
@@ -23,33 +18,6 @@ class Player extends Phaser.GameObjects.Container {
 
         this.WhiteBg = [];
         this.BlackBg = [];
-
-        // this.bgContainer = this.scene.add.container(0, 0);
-
-        for (let i = 0; i < 20; i++) {
-            if( i < 10 ){
-                this.WhiteBg.push( this.createBg( White ) );
-            }
-            else{
-                this.BlackBg.push( this.createBg( Black ) );
-            }
-        }
-
-        // Ajout physics / setting container
-        this.add( [ this.contour, this.sprite ] );
-
-        this.setDepth( 500 );
-
-        this.scene.physics.world.enable( this );
-        this.body.allowGravity = false;
-        this.body.setCircle( ( this.sprite.width / 3.5 ) * 0.5 ).setOffset( - (this.sprite.width / 3.5 ) * 0.5 );
-
-        this.scene.tweens.add({
-            targets: this.sprite,
-            angle: 360,
-            duration: 10000,
-            repeat: -1
-        })
 
         // Creation / init des variables
         this.cameraId = 0;
@@ -104,22 +72,56 @@ class Player extends Phaser.GameObjects.Container {
         // Si le joueur est arrivé sur la planète de fin de niveau
         this.end = false;
 
+        // Sprites
+        this.contour = this.scene.add.sprite( 0, 0, 'playerContour' ).setScale(0.6* proportion);
+        
+        this.sprite = this.scene.add.sprite( 0, 0, 'player' ).setScale(0.5* proportion);
+
+        // Creation des backgrounds
+        for (let i = 0; i < 20; i++) {
+            if( i < 10 ){
+                this.WhiteBg.push( this.createBg( White ) );
+            }
+            else{
+                this.BlackBg.push( this.createBg( Black ) );
+            }
+        }
+
+        // Ajout physics / setting container
+        this.add( [ this.contour, this.sprite ] );
+
+        this.setDepth( 500 );
+
+        this.scene.physics.world.enable( this );
+        this.body.allowGravity = false;
+        this.body.setCircle( ( this.sprite.width / 3.5 ) * 0.5 ).setOffset( - (this.sprite.width / 3.5 ) * 0.5 );
+
+        // Faire tourner le sprite
+        this.scene.tweens.add({
+            targets: this.sprite,
+            angle: 360,
+            duration: 10000,
+            repeat: -1
+        })
+
         // Mettre la couleur en fonction de la couleur de début 
         this.setColor();
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// BACK GROUND /////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Creation des backgrounds
     createBg( color ){
         var sprite = this.scene.add.sprite( 0, 0, 'celluleFin3' ).setScale(0).setTint( color );
         // this.bgContainer.add(sprite)
         return sprite;
     }
 
+    // Switch de couleur des backgrounds
     switchBg( color ){
-        // // console.log(this.bgContainer);
-        // this.bgContainer.setPosition( this.x, this.y )
-        // // console.log('sw<itch coloe')
-        // // console.log(this.WhiteBg[1].x)
+
         if( color == White ){
             this.indexTransWhite = this.addIndex( this.indexTransWhite );
             // // console.log(this.indexTransWhite)
@@ -134,6 +136,7 @@ class Player extends Phaser.GameObjects.Container {
         }
     }
 
+    // Changer la profondeur de champe des backgrounds
     depthChange( tab, obj, index ){
 
         if( tab == this.WhiteBg ){
@@ -174,6 +177,7 @@ class Player extends Phaser.GameObjects.Container {
         
     }
 
+    // Faire grandir le nouveau background en avant
     tweenBgScale( tab, i ){
         
         // console.log(i)
@@ -196,6 +200,7 @@ class Player extends Phaser.GameObjects.Container {
         });
     }
 
+    // Agmenter l'index et revenir a 0 si > a 9
     addIndex( nbr ){
         nbr++;
         if( nbr > 9 ){
@@ -203,6 +208,10 @@ class Player extends Phaser.GameObjects.Container {
         }
         return nbr;
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// FIN BACK GROUND /////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Envoie le joueur dans une direction
     propulse(){
@@ -407,6 +416,10 @@ class Player extends Phaser.GameObjects.Container {
         }
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// CAMREA /////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
     // Deplacement du joueur (tourné ou aspiration)
     createTween(angle, xT, yT, veloX, veloY, bool){
         // Deplacer le joueur autour de la planète
@@ -572,6 +585,10 @@ class Player extends Phaser.GameObjects.Container {
             duration: 700
         });
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// FIB CAMREA /////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     // Ajouter une curCellule au joueur
     addCellule(Cellule){
