@@ -2,7 +2,7 @@ class Level3 extends Phaser.Scene {
 
     // Construction de la scene
     constructor() {
-
+        // Déclaration, des variables
         super( 'Level3' );   
         this.bgWhite = false;
         this.bgBlack = false;
@@ -14,6 +14,7 @@ class Level3 extends Phaser.Scene {
     }
     
     create() {
+        // Initialisation, des variables
         this.space = false;
         this.multipleY = 1.3;
         this.multipleX = 1.1;
@@ -70,6 +71,7 @@ class Level3 extends Phaser.Scene {
         this.map = false;
         this.event = false;
 
+        // Creation du niveau
         this.levelCreate = new Level(this, 3);
     
     }   

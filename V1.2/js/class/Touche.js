@@ -16,11 +16,9 @@ class Touche extends Phaser.GameObjects.Container{
 
         if( name == "Q" ){
             this.touche = scene.add.image( 0, 0, 'Qtuto' );
-            this.tweenScale( true );
         }   
         else if( name == "D" ){
             this.touche = scene.add.image( 0, 0, 'Dtuto' );
-            this.tweenScale( true );
         }
         else if( name == "Z" ){
             this.touche = scene.add.image( 0, 0, 'Ztuto' );

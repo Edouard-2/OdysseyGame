@@ -2,7 +2,7 @@ class Level5 extends Phaser.Scene {
 
     // Construction de la scene
     constructor() {
-
+        // Déclaration, des variables
         super( 'Level5' );   
         this.bgWhite = false;
         this.bgBlack = false;
@@ -12,6 +12,8 @@ class Level5 extends Phaser.Scene {
     }
     
     create() {
+
+        // Initialisation, des variables
         this.space = false;
         this.multipleY = 1.3;
         this.multipleX = 1.5;
@@ -73,8 +75,10 @@ class Level5 extends Phaser.Scene {
         this.map = false;
         this.event = false;
 
+        // Creation du niveau
         this.levelCreate = new Level(this, 5);
 
+        // Creation du dialogue
         this.dial = new Dialogue( this, this.tabBlack.celluleMere[0].x, this.tabBlack.celluleMere[0].y, Black, true );
     
     }   
@@ -89,6 +93,7 @@ class Level5 extends Phaser.Scene {
         }
     }
 
+    // Activer la propulsion pour le joueur
     activePropulse(){
         
         this.event.readyJump = true;

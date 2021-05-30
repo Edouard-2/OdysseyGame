@@ -945,12 +945,15 @@ function contactDial( curPlayer, curSprite ){
     // Faire attérir le joueur sur cette cellule
     else if( curSprite.parent != player.curCellule ){
         this.readyJump = false;
-        player.bgTweenReady = false;
+        curPlayer.bgTweenReady = false;
         // console.log("launchDial")
-        player.scene.dial.spawnDial( true );
+
+        curPlayer.scene.dial.spawnDial( true );
+
         takeDownPlayer( curPlayer, curSprite );
         checkSafePlanet( curPlayer, curSprite.parent );
     }
+    
 }
 
 function tweensRebond( curPlayer, curRebond ){

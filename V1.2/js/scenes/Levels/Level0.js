@@ -4,6 +4,7 @@ class Level0 extends Phaser.Scene {
     constructor() {
 
         super( 'Level0' );   
+        // Déclaration, des variables
         this.bgWhite = false;
         this.bgBlack = false;
         this.bgSwitch = false;
@@ -12,6 +13,7 @@ class Level0 extends Phaser.Scene {
     }
     
     create() {
+        // Initialisation, des variables
         this.space = false;
         curLevel = "Level0";
         this.multipleY = 1.5;
@@ -69,12 +71,15 @@ class Level0 extends Phaser.Scene {
         this.map = false;
         this.event = false;
         
+        // Creation du niveau
         this.levelCreate = new Level(this, 0);
         
+        // Creation du dialoguer
         this.dial = new Dialogue(this, this.tabBlack.celluleMere[0].x, this.tabBlack.celluleMere[0].y);
 
         this.event.readyJump = false;
 
+        // Adapter la couleur de fond 
         this.event.compareColor();
     }
 
@@ -87,32 +92,39 @@ class Level0 extends Phaser.Scene {
         }
     }
 
+    // Activer la propulsion pour le joueur
     activePropulse(){
         
         this.event.readyJump = true;
         console.log(this.event.readyJump)
     }
 
+    // Recommencer les dialogues
     restartDial(){
         this.event.readyJump = false;
         this.dial.dialReady = true;
         setTimeout(() => {
+            // Activer l'animation des touches UI
+            this.activeTouche( "Q" );
+            this.activeTouche( "D" );
+
+            // Faire spawn le nouveau dialogue
             this.dial.spawnDial();
         }, 1000);
         
     }
 
-    activeTouche(){
+    // Rendre une touche UI visible
+    activeTouche( name ){
+        console.log("touche")
         this.tabWhite.tuto.forEach( touche => {
-            if( touche.name == "Z" ){
+            if( touche.name == name ){
                 touche.tweenScale( true );
-            }
-            else{
-                touche.tweenScale();
             }
         });
     }
 
+    // Faire monter la cellule mere
     tweenUp(){
         
         if( this.tabBlack.celluleMere ){

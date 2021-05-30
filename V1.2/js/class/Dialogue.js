@@ -16,7 +16,7 @@ class Dialogue extends Phaser.GameObjects.Container {
             1 : " Tout le monde est la.",
             2 : " Il ne manque plus que toi.",
             3 : " Monte vite avant que je parte ...",
-            4 : " Saute ! Je ne vais pas tarder à partir ...",
+            4 : " Saute ! Je ne vais pas tarder a partir ...",
             6 : " Tu es revenu ! Allez, viens avant que je parte pour de bon ..."
         };
 
@@ -108,11 +108,13 @@ class Dialogue extends Phaser.GameObjects.Container {
     }
 
     // Faire la lecture de dialogue pour les afficher avec un delay
-    spawnDial( bool ){
+    spawnDial( boolAnim ){
         
         var iCoint = 0;
         // variable pour si le texte est stoppé on arréte
         var bool = false;
+        // console.log(this.indexCurDial);
+
         for( let i = this.indexCurChara; i <= this.curDataDial.length; i++ ) { 
             iCoint++;
             this.scene.time.delayedCall( iCoint*90, ()=>{ 
@@ -226,7 +228,7 @@ class Dialogue extends Phaser.GameObjects.Container {
             if( this.transReady ){
                 if( this.scene.level == 0 ){
                     // Apparition des touches
-                    this.scene.activeTouche();
+                    this.scene.activeTouche( "Z" );
                 }
                 this.transReady = false;
                 this.espace.setVisible(false)
