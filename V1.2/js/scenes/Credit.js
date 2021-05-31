@@ -44,13 +44,19 @@ class Credit extends Phaser.Scene {
         this.container.add( this.add.text( 0, 730+400, 'Sound Effect', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
         this.container.add( this.add.text( 0, 800+400, 'Sound from Zapsplat.com', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
 
-        // Sound Track
-        this.container.add( this.add.text( 0, 900+500, 'Meric aux Playtester', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
-        this.container.add( this.add.text( 0, 970+500, 'Cabanie	Eve', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
-        this.container.add( this.add.text( 0, 1020+500, 'czulowski arsen', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
-        this.container.add( this.add.text( 0, 1070+500, 'De Carvalho Pereira	Francisco', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
-        this.container.add( this.add.text( 0, 1120+500, 'Lobbe Jules', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
-        this.container.add( this.add.text( 0, 1170+500, 'Vigne Bastien', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        // Font
+        this.container.add( this.add.text( 0, 900+500, 'Police de caractere', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 970+500, 'Balbeer par gameboth studio', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 1020+500, 'Saint-Tropez par Woodcutter', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 1070+500, 'Site : Dafont.com', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+
+        // Play Test
+        this.container.add( this.add.text( 0, 1170+600, 'Meric aux Playtester', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 1240+600, 'Cabanie	Eve', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 1290+600, 'czulowski arsen', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 1340+600, 'De Carvalho Pereira	Francisco', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 1390+600, 'Lobbe Jules', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 1440+600, 'Vigne Bastien', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
 
         // this.container.add( this.add.text( 0, 840+400, 'Auteur: Scott Buckley', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
     }   
@@ -78,6 +84,11 @@ class Credit extends Phaser.Scene {
             onInitBouton = true;
 
             this.scene.start("MainMenu");
+        }
+
+        if( this.container.y < -(1440+600)){
+            this.scene.stop();
+            this.scene.start( "MainMenu" );
         }
     }
 }
