@@ -24,7 +24,7 @@ class Credit extends Phaser.Scene {
         }
 
         // Developper
-        this.container.add( this.add.text( 0, 0, 'Developer', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 0, 'Developpeur', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
         this.container.add( this.add.text( 0, 70, 'Edouard MORDANT', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
 
         // Game Design
@@ -32,7 +32,7 @@ class Credit extends Phaser.Scene {
         this.container.add( this.add.text( 0, 240+100, 'Edouard MORDANT', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
 
         // Direction Artistique
-        this.container.add( this.add.text( 0, 340+200, 'Direction Artisc', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
+        this.container.add( this.add.text( 0, 340+200, 'Direction Artisque', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
         this.container.add( this.add.text( 0, 410+200, 'Edouard MORDANT', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
 
         // Inspiration
@@ -43,7 +43,7 @@ class Credit extends Phaser.Scene {
         // Sound Track
         this.container.add( this.add.text( 0, 730+400, 'Sound Effect', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
         this.container.add( this.add.text( 0, 800+400, 'Sound from Zapsplat.com', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
-        
+
         // Sound Track
         this.container.add( this.add.text( 0, 900+500, 'Meric aux Playtester', { fontFamily: "BalbeerRustic", fontSize: '70px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
         this.container.add( this.add.text( 0, 970+500, 'Cabanie	Eve', { fontFamily: "BalbeerRustic", fontSize: '40px', fontStyle: "bold", color: BlackText } ).setOrigin(0.5) );
