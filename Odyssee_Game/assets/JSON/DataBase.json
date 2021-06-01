@@ -1,0 +1,15 @@
+{
+    "dialogue": {
+        "0" : " IZUGEFHUIzhef"
+    },
+    
+    "level": [
+        "MainMenu",
+        "Level1",
+        "Level2",
+        "Level3",
+        "Level4",
+        "Level5"
+    ]
+    
+}
